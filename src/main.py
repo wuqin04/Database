@@ -52,7 +52,10 @@ class DataManager():
             if checkGmail(gmail):
                 break
 
-        source = input("Enter source: ")
+        while True:        
+            source = input("Enter source: ").lower()
+            if checkSource(source):
+                break
 
         new_client = Client(name, gmail, source)
         self.data.append(new_client)
@@ -85,6 +88,14 @@ def checkName(name):
             print("Client's name cannot have special characters.")
             return False
     return True  
+
+# check if the source is meet with currently sources available
+def checkSource(source):
+    if not source == "course" and not source == "c++ course" and not source == "c++" \
+        and not source == "website":
+        print("Source can only be course or website.")
+        return False
+    return True
 
 def main():
     manager = DataManager()

@@ -39,10 +39,19 @@ class DataManager():
         except FileNotFoundError:
             print("Error: File cannot be found.")
 
+    # add the data and store in run-time, this do not save into 'data.json' file
+    def add_data(self):
+        name   = input("Enter Client's name: ")
+        gmail  = input("Enter gmail: ")
+        source = input("Enter source: ")
+
+        new_client = Client(name, gmail, source)
+        self.data.append(new_client)
+
     def print_data(self):
         if not self.data:
             print("Error: Data is empty.")
-            
+
         for client in self.data:
             print(f"Client's Name: {client.name}, Gmail: {client.gmail}, Source: {client.source}")
 
@@ -50,6 +59,8 @@ class DataManager():
 def main():
     manager = DataManager()
     manager.read_data()
+    manager.print_data()
+    manager.add_data()
     manager.print_data()
 
 if __name__ == "__main__":

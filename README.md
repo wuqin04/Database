@@ -9,6 +9,6 @@ Client's Database
 
 ## Getting Started
 
-## Help
+## DISCLAIMER
 
-Do not ever public this repo!
+DO NOT EVEN TRY TO TURN THIS REPO PUBLIC SINCE IT CONTAINS DATA OF USER!!!

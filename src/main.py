@@ -7,36 +7,50 @@ class Client(object):
         self.gmail = gmail
         self.source = source
 
+    @classmethod
+    def from_dict(cls, data_dict):
+        return cls(data_dict['name'], data_dict['gmail'], data_dict['source'])
+    
+    def to_dict(self):
+        return {
+            'name':   self.name,
+            'gmail':  self.gmail,
+            'source': self.source
+        }
+
+
 # manage a collection of clients and handle reading/writing to storage 
-class ClientManager():
+class DataManager():
     def __init__(self):
-        pass
+        # store Clients objects
+        self.data = []
 
     # extract data from 'data_storage/data.json'
-    def read_data():
+    def read_data(self):
         # open data.json file as read mode
-        with open('data_storage/data.json', 'r') as file:
-            data = json.load(file)
+        try:
+            with open('data_storage/data.json', 'r') as file:
+                json_data = json.load(file)
+            
+            for i in json_data['clients_data']:
+                client = Client.from_dict(i)
+                self.data.append(client)
+
+        except FileNotFoundError:
+            print("Error: File cannot be found.")
+
+    def print_data(self):
+        if not self.data:
+            print("Error: Data is empty.")
+            
+        for client in self.data:
+            print(f"Client's Name: {client.name}, Gmail: {client.gmail}, Source: {client.source}")
+
         
-        for i in data['clients_data']:
-            print(i)
-
-    # this will replace everything previous had in the data.json 
-    def add_data():
-        client_name = input("Enter client's name: ")
-        client_gmail = input("Enter client's gmail address: ")
-        client_source = input("Enter client's source: ")
-
-        data = dict(name = client_name, gmail = client_gmail, source = client_source)
-
-        write_to_json = json.dumps(data, indent=4)
-        with open('data_storage/data.json', 'w') as file:
-            file.write(write_to_json)
-    
-
 def main():
-    ClientManager.read_data()
-    ClientManager.add_data()
+    manager = DataManager()
+    manager.read_data()
+    manager.print_data()
 
 if __name__ == "__main__":
     main()

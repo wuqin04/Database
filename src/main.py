@@ -1,3 +1,4 @@
+import string
 import json
 from email_validator import validate_email, EmailNotValidError
 
@@ -41,7 +42,10 @@ class DataManager():
 
     # add the data and store in run-time, this do not save into 'data.json' file
     def add_data(self):
-        name   = input("Enter Client's name: ")
+        while True:
+            name = input("Enter Client's name: ")
+            if checkName(name):
+                break
 
         while True:
             gmail = input("Enter Gmail Address: ").lower()
@@ -69,7 +73,19 @@ def checkGmail(gmail):
     except EmailNotValidError as error:
         print(str(error))
         return False
-        
+
+# check whether the name contains special characters or it is empty
+def checkName(name):
+    if not name:
+        print("Client's name cannot be empty.")
+        return False
+    
+    for char in name:
+        if char in string.punctuation:
+            print("Client's name cannot have special characters.")
+            return False
+    return True  
+
 def main():
     manager = DataManager()
     manager.read_data()

@@ -1,4 +1,5 @@
 import json
+from email_validator import validate_email, EmailNotValidError
 
 # store single client information only, do not do any json file handling here
 class Client(object):
@@ -17,7 +18,6 @@ class Client(object):
             'gmail':  self.gmail,
             'source': self.source
         }
-
 
 # manage a collection of clients and handle reading/writing to storage 
 class DataManager():
@@ -42,7 +42,12 @@ class DataManager():
     # add the data and store in run-time, this do not save into 'data.json' file
     def add_data(self):
         name   = input("Enter Client's name: ")
-        gmail  = input("Enter gmail: ")
+
+        while True:
+            gmail = input("Enter Gmail Address: ").lower()
+            if checkGmail(gmail):
+                break
+
         source = input("Enter source: ")
 
         new_client = Client(name, gmail, source)
@@ -55,6 +60,15 @@ class DataManager():
         for client in self.data:
             print(f"Client's Name: {client.name}, Gmail: {client.gmail}, Source: {client.source}")
 
+# email-validator module needed to check whether the gmail is valid or not
+def checkGmail(gmail):
+    try:
+        validate_email(gmail)
+        return True
+    
+    except EmailNotValidError as error:
+        print(str(error))
+        return False
         
 def main():
     manager = DataManager()

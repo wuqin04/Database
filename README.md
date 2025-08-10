@@ -16,6 +16,10 @@ For Python:
 ```sh
 pip install email-validator
 ```
+* Install `tkinter` module
+```sh
+pip install tkinter
+```
 
 ### Installing 
 

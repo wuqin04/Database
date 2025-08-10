@@ -9,6 +9,21 @@ Client's Database
 
 ## Getting Started
 
+### Dependencies
+
+For Python:
+* Install `email-validator` module 
+```py
+pip install email-validator
+```
+
+### Installing 
+
+* Install the repo into local folder
+```sh
+git clone https://github.com/wuqin04/Database.git
+```
+
 ## DISCLAIMER
 
 DO NOT EVEN TRY TO TURN THIS REPO PUBLIC SINCE IT CONTAINS DATA OF USER!!!

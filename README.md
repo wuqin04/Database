@@ -13,7 +13,7 @@ Client's Database
 
 For Python:
 * Install `email-validator` module 
-```py
+```sh
 pip install email-validator
 ```
 

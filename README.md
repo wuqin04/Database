@@ -24,7 +24,7 @@ pip install tkinter
 ### Installing 
 
 * Install the repo into local folder
-```sh
+```git
 git clone https://github.com/wuqin04/Database.git
 ```
 

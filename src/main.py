@@ -60,6 +60,18 @@ class DataManager():
         new_client = Client(name, gmail, source)
         self.data.append(new_client)
 
+    def save_data(self):
+        new_data = []
+        for client in self.data:
+            new_data.append(Client.to_dict(client))
+
+        data_to_save = {'clients_data': new_data}
+
+        json_data = json.dumps(data_to_save, indent=4)
+        with open("data_storage/data.json", "w") as file:
+            file.write(json_data)
+                
+
     def print_data(self):
         if not self.data:
             print("Error: Data is empty.")
@@ -103,6 +115,7 @@ def main():
     manager.print_data()
     manager.add_data()
     manager.print_data()
+    manager.save_data()
 
 if __name__ == "__main__":
     main()

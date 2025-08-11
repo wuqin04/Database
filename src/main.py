@@ -119,6 +119,7 @@ def main():
     manager.print_data()
     manager.add_data()
     manager.print_data()
+    manager.save_data()
 
 if __name__ == "__main__":
     main()

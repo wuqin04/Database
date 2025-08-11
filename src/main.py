@@ -1,6 +1,5 @@
 import string
 import json
-import os
 from email_validator import validate_email, EmailNotValidError
 
 # store single client information only, do not do any json file handling here
@@ -75,9 +74,7 @@ class DataManager():
 
         # Todo: check if 'data_storage' dir and 'data_json' exists or not
         with open("data_storage/data.json", "w") as file:
-            file.write(json_data)
-
-                
+            file.write(json_data)        
 
     def print_data(self):
         if not self.data:
@@ -122,7 +119,6 @@ def main():
     manager.print_data()
     manager.add_data()
     manager.print_data()
-    manager.save_data()
 
 if __name__ == "__main__":
     main()

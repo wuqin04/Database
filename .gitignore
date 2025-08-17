@@ -1,0 +1,11 @@
+# Compiled binaries
+*.out
+*.o
+*.exe
+
+# Debug and build folders
+/build/
+/bin/
+
+# VS Code settings
+.vscode/

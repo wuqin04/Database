@@ -1,7 +1,12 @@
-#include <iostream>
+#include "sys/socket.h"
+#include "netinet/in.h"
+#include "netinet/ip.h"
 
 int main() {
-    std::cout << "Hello world";
+    // file descriptor
+    int fd = socket(AF_INET, SOCK_STREAM, 0);
 
-    return 0;
+    int val = 1;
+
+    setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &val, sizeof(val));
 }

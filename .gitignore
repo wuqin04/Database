@@ -6,7 +6,7 @@
 # Debug and build folders
 /build/
 /bin/
-/src/redis
+/redis/
 
 # VS Code settings
 .vscode/

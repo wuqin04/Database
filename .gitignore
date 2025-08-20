@@ -7,7 +7,7 @@
 /build/
 /bin/
 /redis/
-/src/main.exe
+/src/main
 
 # VS Code settings
 .vscode/
